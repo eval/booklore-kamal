@@ -1,0 +1,10 @@
+# Secrets and personal notes
+mise.local.toml
+NOTES.md
+
+# Ruby/Bundler
+vendor/bundle/
+.bundle/
+
+# macOS
+.DS_Store

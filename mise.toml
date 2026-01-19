@@ -1,0 +1,9 @@
+# mise configuration for booklore-kamal
+# Copy mise.local.toml.example to mise.local.toml and fill it in
+
+[tools]
+ruby = "3.3"
+
+[env]
+_.path = ["bin"]
+# Non-secret environment variables can go here (to be committed) or in mise.local.toml (git ignored).

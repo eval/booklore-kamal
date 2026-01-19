@@ -1,0 +1,18 @@
+# Copy this file to mise.local.toml and fill in your secrets
+# mise.local.toml is gitignored and will not be committed
+
+[env]
+# Server configuration
+BOOKLORE_HOST = "your-server-ip"
+BOOKLORE_DOMAIN = "booklore.example.com"
+BOOKLORE_TZ = "Etc/UTC"  # optional, defaults to Etc/UTC
+
+# GitHub Container Registry credentials (for pulling booklore image)
+# Create a PAT at https://github.com/settings/tokens with read:packages scope
+KAMAL_REGISTRY_USERNAME = "your-github-username"
+KAMAL_REGISTRY_PASSWORD = "ghp_your_github_pat"
+
+# Database credentials
+BOOKLORE_DB_USER = "booklore"
+BOOKLORE_DB_PASSWORD = "your-secure-password"
+BOOKLORE_DB_ROOT_PASSWORD = "your-secure-root-password"

@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+set -e
+
+cd "$(dirname "$0")/.."
+
+echo "=== Deployed Version ==="
+deployed=$(mise exec -- bin/kamal details 2>&1 | grep -o 'booklore-web-v[0-9.]*' | head -1 | sed 's/booklore-web-//')
+echo "Currently running: $deployed"
+echo
+
+echo "=== Latest Releases ==="
+gh release list --repo booklore-app/booklore --limit 5
+echo
+
+latest=$(gh release list --repo booklore-app/booklore --limit 1 --json tagName -q '.[0].tagName')
+echo "=== Status ==="
+if [ "$deployed" = "$latest" ]; then
+  echo "✓ Up to date"
+else
+  echo "⚠ Update available: $deployed → $latest"
+  echo
+  echo "View changes: https://github.com/booklore-app/booklore/compare/$deployed...$latest"
+  echo
+  echo "To upgrade: mise exec -- bin/kamal deploy"
+fi

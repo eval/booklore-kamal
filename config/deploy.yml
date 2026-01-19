@@ -1,0 +1,68 @@
+# Kamal 2 deployment configuration for BookLore
+# https://github.com/booklore-app/booklore
+#
+# All customization is done via environment variables in mise.local.toml
+# See mise.local.toml.example for required variables
+
+service: booklore
+image: booklore-app/booklore:latest
+
+deploy_timeout: 120
+
+registry:
+  server: ghcr.io
+  username:
+    - KAMAL_REGISTRY_USERNAME
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+
+builder:
+  arch: amd64
+
+servers:
+  web:
+    hosts:
+      - <%= ENV['BOOKLORE_HOST'] %>
+    options:
+      volume:
+        - /data/booklore/data:/app/data
+        - /data/booklore/books:/books
+        - /data/booklore/bookdrop:/bookdrop
+
+proxy:
+  ssl: true
+  host: <%= ENV['BOOKLORE_DOMAIN'] %>
+  app_port: 6060
+  healthcheck:
+    path: /api/v1/healthcheck
+    interval: 3
+    timeout: 3
+
+env:
+  clear:
+    TZ: <%= ENV.fetch('BOOKLORE_TZ', 'Etc/UTC') %>
+    APP_USER_ID: "1000"
+    APP_GROUP_ID: "1000"
+    DATABASE_URL: "jdbc:mariadb://booklore-db:3306/booklore"
+  secret:
+    - DATABASE_USERNAME
+    - DATABASE_PASSWORD
+
+accessories:
+  db:
+    image: mariadb:10
+    host: <%= ENV['BOOKLORE_HOST'] %>
+    volumes:
+      - /data/booklore/mariadb:/var/lib/mysql
+    options:
+      health-cmd: "mariadb-admin ping -h localhost"
+      health-interval: 5s
+      health-timeout: 5s
+      health-retries: 10
+    env:
+      clear:
+        MYSQL_DATABASE: booklore
+      secret:
+        - MYSQL_ROOT_PASSWORD
+        - MYSQL_USER
+        - MYSQL_PASSWORD

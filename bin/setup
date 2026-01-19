@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+set -e
+
+cd "$(dirname "$0")/.."
+
+# Colors
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+BLUE='\033[0;34m'
+BOLD='\033[1m'
+NC='\033[0m' # No Color
+
+echo -e "${BLUE}${BOLD}=== Checking prerequisites ===${NC}"
+if ! command -v mise &> /dev/null; then
+  echo -e "${RED}✗ mise is not installed.${NC}"
+  echo -e "  Install it from: ${BOLD}https://mise.jdx.dev/${NC}"
+  echo
+  echo -e "  Quick install: ${YELLOW}curl https://mise.run | sh${NC}"
+  exit 1
+fi
+echo -e "${GREEN}✓ mise found${NC}"
+
+echo
+echo -e "${BLUE}${BOLD}=== Installing dependencies ===${NC}"
+bundle install
+
+if [ ! -f mise.local.toml ]; then
+  echo
+  echo -e "${BLUE}${BOLD}=== Creating mise.local.toml ===${NC}"
+  cp mise.local.toml.example mise.local.toml
+  echo -e "${GREEN}✓ Created mise.local.toml from example${NC}"
+  echo
+  echo -e "${YELLOW}${BOLD}Next steps:${NC}"
+  echo -e "  1. Edit ${BOLD}mise.local.toml${NC} with your server IP, domain, and credentials"
+  echo -e "  2. Prepare server directories:"
+  echo -e "     ${YELLOW}ssh your-server 'sudo mkdir -p /data/booklore/{data,books,bookdrop,mariadb} && sudo chown -R 1000:1000 /data/booklore'${NC}"
+  echo -e "  3. Deploy: ${YELLOW}mise exec -- bin/kamal setup${NC}"
+else
+  echo
+  echo -e "${GREEN}✓ mise.local.toml already exists${NC}"
+fi
