@@ -7,8 +7,8 @@ BOOKLORE_HOST = "your-server-ip"
 BOOKLORE_DOMAIN = "booklore.example.com"
 BOOKLORE_TZ = "Etc/UTC"  # optional, defaults to Etc/UTC
 
-# GitHub Container Registry credentials (for pulling booklore image)
-# Create a PAT at https://github.com/settings/tokens with read:packages scope
+# GitHub Container Registry credentials
+# Create a PAT at https://github.com/settings/tokens with read:packages and write:packages scopes
 KAMAL_REGISTRY_USERNAME = "your-github-username"
 KAMAL_REGISTRY_PASSWORD = "ghp_your_github_pat"
 

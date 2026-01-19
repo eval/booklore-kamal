@@ -28,7 +28,7 @@ BOOKLORE_DOMAIN = "booklore.example.com"   # Your domain
 BOOKLORE_TZ = "Europe/Copenhagen"          # Your timezone (optional)
 
 # GitHub Container Registry credentials
-# Create a PAT at https://github.com/settings/tokens with read:packages scope
+# Create a PAT at https://github.com/settings/tokens with read:packages and write:packages scopes
 KAMAL_REGISTRY_USERNAME = "your-github-username"
 KAMAL_REGISTRY_PASSWORD = "ghp_xxxxxxxxxxxx"
 
