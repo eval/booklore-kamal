@@ -116,4 +116,4 @@ mise exec -- bin/kamal deploy
 
 ## License
 
-This deployment configuration is provided as-is. BookLore itself is licensed under [GPL-3.0](https://github.com/booklore-app/booklore/blob/main/LICENSE).
+MIT. BookLore itself is licensed under [GPL-3.0](https://github.com/booklore-app/booklore/blob/main/LICENSE).
