@@ -46,7 +46,7 @@ BOOKLORE_DB_ROOT_PASSWORD = "your-secure-root-password"
 mise exec -- bin/kamal setup
 ```
 
-This will setup anything necessary to deploy an application to a fresh host. Further details at [Kamal docs](https://kamal-deploy.org/docs/commands/setup/).
+This sets up everything needed on a fresh host and deploys BookLore. Further details at [Kamal docs](https://kamal-deploy.org/docs/commands/setup/).
 
 ### 4. Access BookLore
 

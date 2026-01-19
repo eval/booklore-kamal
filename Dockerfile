@@ -1,4 +1,4 @@
-# This Dockerfile exists only to satisfy Kamal's build requirement.
-# It simply re-tags the pre-built BookLore image from GHCR.
+# Wrapper Dockerfile for Kamal deployment
+# Pulls the official BookLore image and allows Kamal to add required labels
 ARG VERSION=latest
 FROM ghcr.io/booklore-app/booklore:${VERSION}
