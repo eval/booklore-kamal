@@ -4,7 +4,7 @@ set -e
 cd "$(dirname "$0")/.."
 
 echo "=== Deployed Version ==="
-deployed=$(mise exec -- bin/kamal details 2>&1 | grep -o 'booklore-web-v[0-9.]*' | head -1 | sed 's/booklore-web-//')
+deployed=$(mise exec -- bin/kamal app logs 2>&1 | grep -o 'v[0-9]\+\.[0-9]\+\.[0-9]\+' | head -1)
 echo "Currently running: $deployed"
 echo
 
