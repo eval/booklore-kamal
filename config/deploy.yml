@@ -5,7 +5,7 @@
 # See mise.local.toml.example for required variables
 
 service: booklore
-image: booklore-app/booklore:latest
+image: booklore-app/booklore
 
 deploy_timeout: 120
 
