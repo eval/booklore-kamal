@@ -7,7 +7,7 @@
 service: booklore
 image: <%= ENV['KAMAL_REGISTRY_USERNAME'] %>/booklore
 
-deploy_timeout: 120
+deploy_timeout: 300
 
 registry:
   server: ghcr.io
