@@ -40,22 +40,15 @@ BOOKLORE_DB_ROOT_PASSWORD = "your-secure-root-password"
 
 **Note:** `deploy.yml` uses ERB to read these environment variables, so you never need to edit it directly. This means you can `git pull` updates without merge conflicts.
 
-### 3. Prepare server directories
-
-SSH into your server and create the data directories:
-
-```bash
-sudo mkdir -p /data/booklore/{data,books,bookdrop,mariadb}
-sudo chown -R 1000:1000 /data/booklore
-```
-
-### 4. Deploy
+### 3. Deploy
 
 ```bash
 mise exec -- bin/kamal setup
 ```
 
-### 5. Access BookLore
+This will setup anything necessary to deploy an application to a fresh host. Further details at [Kamal docs](https://kamal-deploy.org/docs/commands/setup/).
+
+### 4. Access BookLore
 
 Open `https://your-domain.com` in your browser. SSL certificates are automatically provisioned by kamal-proxy via Let's Encrypt.
 

@@ -33,9 +33,7 @@ if [ ! -f mise.local.toml ]; then
   echo
   echo -e "${YELLOW}${BOLD}Next steps:${NC}"
   echo -e "  1. Edit ${BOLD}mise.local.toml${NC} with your server IP, domain, and credentials"
-  echo -e "  2. Prepare server directories:"
-  echo -e "     ${YELLOW}ssh your-server 'sudo mkdir -p /data/booklore/{data,books,bookdrop,mariadb} && sudo chown -R 1000:1000 /data/booklore'${NC}"
-  echo -e "  3. Deploy: ${YELLOW}mise exec -- bin/kamal setup${NC}"
+  echo -e "  2. Deploy: ${YELLOW}mise exec -- bin/kamal setup${NC}"
 else
   echo
   echo -e "${GREEN}✓ mise.local.toml already exists${NC}"
