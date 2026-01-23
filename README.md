@@ -67,7 +67,13 @@ This shows your deployed version, recent releases, and a link to the changelog i
 If an update is available:
 
 ```bash
-mise exec -- bin/kamal deploy
+./bin/deploy
+```
+
+This automatically fetches the latest BookLore release and deploys it. To deploy a specific version:
+
+```bash
+./bin/deploy v1.18.3
 ```
 
 ## Kobo Sync Setup
@@ -104,7 +110,10 @@ mise exec -- bin/kamal app boot
 mise exec -- bin/kamal details
 
 # Deploy latest version
-mise exec -- bin/kamal deploy
+./bin/deploy
+
+# Deploy specific version
+./bin/deploy v1.18.3
 ```
 
 ## License

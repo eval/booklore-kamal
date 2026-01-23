@@ -18,6 +18,9 @@ registry:
 
 builder:
   arch: amd64
+  args:
+    VERSION: <%= ENV.fetch('VERSION', 'latest') %>
+    KAMAL_REGISTRY_USERNAME: <%= ENV['KAMAL_REGISTRY_USERNAME'] %>
 
 servers:
   web:

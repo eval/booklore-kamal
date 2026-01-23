@@ -4,8 +4,8 @@ set -e
 cd "$(dirname "$0")/.."
 
 echo "=== Deployed Version ==="
-deployed=$(mise exec -- bin/kamal app logs 2>&1 | grep -o 'v[0-9]\+\.[0-9]\+\.[0-9]\+' | head -1)
-echo "Currently running: $deployed"
+deployed=$(mise exec -- bin/kamal app exec --reuse 'sh -c "echo \$BOOKLORE_VERSION"' 2>&1 | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | head -1)
+echo "Currently running: ${deployed:-unknown}"
 echo
 
 echo "=== Latest Releases ==="
@@ -21,5 +21,5 @@ else
   echo
   echo "View changes: https://github.com/booklore-app/booklore/compare/$deployed...$latest"
   echo
-  echo "To upgrade: mise exec -- bin/kamal deploy"
+  echo "To upgrade: ./bin/deploy"
 fi
